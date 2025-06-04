@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirección App Link</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    .main-button {
+      padding: 10px 20px;
+      background: blue;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .close-btn, .store-btn {
+      margin-top: 10px;
+      background: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .store-btn {
+      background: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <h2>Redirección con App Link</h2>
+
+  <button class="main-button" onclick="redirectToAppLink()">Abrir con App Link</button>
+  <button class="main-button" onclick="redirectToIntent()">Abrir con Intent</button>
+  <button class="main-button" onclick="redirectToUri()">Abrir con Uri scheme</button>
+
+  <div id="popup">
+    <div class="popup-content">
+      <p>Estamos intentando abrir tu app...</p>
+      <button class="close-btn" onclick="closePopup()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    function redirectToAppLink() {
+      document.getElementById('popup').style.display = 'flex';
+      window.location.href = "/redirect?type=applink";
+    }
+
+    function redirectToIntent() {
+      document.getElementById('popup').style.display = 'flex';
+      window.location.href = "/redirect?type=intent";
+    }
+
+    function redirectToUri() {
+      document.getElementById('popup').style.display = 'flex';
+      window.location.href = "/redirect?type=uri";
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
